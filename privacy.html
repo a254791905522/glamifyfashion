@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy — Glamify: Dress Up Studio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --cream: #fff8fb;
+            --blush: #ffc9e0;
+            --rose: #ff7eb3;
+            --lilac: #c9a8f5;
+            --mint: #9eedd0;
+            --ink: #4a3558;
+            --muted: #6b5a78;
+            --paper: rgba(255, 255, 255, 0.88);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Nunito", -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--ink);
+            min-height: 100vh;
+            background:
+                radial-gradient(ellipse 100% 60% at 100% 0%, rgba(255, 201, 224, 0.55), transparent 50%),
+                radial-gradient(circle at 0% 80%, rgba(201, 168, 245, 0.4), transparent 45%),
+                linear-gradient(180deg, #fef6ff 0%, #f2fff9 100%);
+            padding: 28px 18px 48px;
+            line-height: 1.65;
+        }
+
+        .page {
+            max-width: 720px;
+            margin: 0 auto;
+        }
+
+        .masthead {
+            text-align: center;
+            padding-bottom: 26px;
+            border-bottom: 3px dotted rgba(255, 126, 179, 0.45);
+            margin-bottom: 26px;
+        }
+
+        .masthead .emoji {
+            font-size: 2.5rem;
+            line-height: 1;
+            margin-bottom: 10px;
+        }
+
+        h1 {
+            font-family: "Fredoka", sans-serif;
+            font-size: clamp(1.75rem, 4vw, 2.35rem);
+            font-weight: 700;
+            color: var(--ink);
+            margin-bottom: 6px;
+        }
+
+        .app-name {
+            font-family: "Fredoka", sans-serif;
+            font-weight: 600;
+            color: var(--rose);
+            font-size: 1.1rem;
+        }
+
+        .effective {
+            margin-top: 12px;
+            font-size: 0.92rem;
+            font-weight: 700;
+            color: var(--muted);
+        }
+
+        .toc {
+            background: var(--paper);
+            border-radius: 20px;
+            padding: 18px 20px;
+            margin-bottom: 24px;
+            border: 2px solid rgba(255, 126, 179, 0.22);
+            box-shadow: 0 8px 28px rgba(74, 53, 88, 0.08);
+        }
+
+        .toc p {
+            font-family: "Fredoka", sans-serif;
+            font-weight: 700;
+            font-size: 0.95rem;
+            margin-bottom: 10px;
+            color: var(--ink);
+        }
+
+        .toc ol {
+            margin-left: 1.25rem;
+            font-weight: 700;
+            color: var(--muted);
+            font-size: 0.95rem;
+        }
+
+        .toc a {
+            color: var(--rose);
+            text-decoration: none;
+        }
+
+        .toc a:hover {
+            text-decoration: underline;
+        }
+
+        section {
+            margin-bottom: 22px;
+            padding: 20px 20px 18px;
+            background: var(--paper);
+            border-radius: 18px;
+            border: 2px solid rgba(201, 168, 245, 0.28);
+            box-shadow: 0 6px 22px rgba(74, 53, 88, 0.06);
+        }
+
+        section h2 {
+            font-family: "Fredoka", sans-serif;
+            font-size: 1.15rem;
+            color: var(--ink);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        section h2 .num {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--blush), var(--lilac));
+            font-size: 0.85rem;
+            color: var(--ink);
+        }
+
+        p {
+            color: var(--muted);
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        p:last-child {
+            margin-bottom: 0;
+        }
+
+        ul {
+            margin: 8px 0 0 1.2rem;
+            color: var(--muted);
+            font-weight: 600;
+        }
+
+        li {
+            margin-bottom: 6px;
+        }
+
+        .callout {
+            margin-top: 14px;
+            padding: 14px 16px;
+            border-radius: 14px;
+            background: linear-gradient(120deg, rgba(158, 237, 208, 0.35), rgba(255, 201, 224, 0.35));
+            border-left: 4px solid var(--rose);
+            font-weight: 700;
+            color: var(--ink);
+        }
+
+        .external {
+            margin-top: 20px;
+            padding: 18px;
+            border-radius: 16px;
+            background: rgba(255, 255, 255, 0.65);
+            border: 2px dashed rgba(255, 126, 179, 0.35);
+            text-align: center;
+        }
+
+        .external p {
+            margin-bottom: 12px;
+        }
+
+        .external a {
+            color: var(--rose);
+            font-weight: 800;
+            text-decoration: none;
+        }
+
+        .external a:hover {
+            text-decoration: underline;
+        }
+
+        .nav-footer {
+            margin-top: 28px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+        }
+
+        .nav-footer a {
+            font-family: "Fredoka", sans-serif;
+            font-weight: 700;
+            text-decoration: none;
+            padding: 12px 22px;
+            border-radius: 999px;
+            font-size: 0.95rem;
+        }
+
+        .nav-home {
+            background: #fff;
+            color: var(--ink);
+            border: 3px solid var(--lilac);
+        }
+
+        .nav-store {
+            background: linear-gradient(135deg, var(--rose), #ff5c9a);
+            color: #fff;
+            box-shadow: 0 8px 22px rgba(255, 126, 179, 0.35);
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <header class="masthead">
+            <div class="emoji" aria-hidden="true">🌸</div>
+            <h1>Privacy &amp; data</h1>
+            <p class="app-name">Glamify: Dress Up Studio</p>
+            <p class="effective">Effective date: April 1, 2026</p>
+        </header>
+
+        <nav class="toc" aria-label="On this page">
+            <p>Quick navigation</p>
+            <ol>
+                <li><a href="#who">Who this applies to</a></li>
+                <li><a href="#collect">Categories of information</a></li>
+                <li><a href="#use">How we use information</a></li>
+                <li><a href="#track">Tracking &amp; advertising context</a></li>
+                <li><a href="#share">Sharing &amp; service providers</a></li>
+                <li><a href="#kids">Families &amp; younger players</a></li>
+                <li><a href="#rights">Your choices &amp; regional rights</a></li>
+                <li><a href="#changes">Updates to this notice</a></li>
+                <li><a href="#contact">Contact &amp; developer policy</a></li>
+            </ol>
+        </nav>
+
+        <section id="who">
+            <h2><span class="num">1</span> Who this applies to</h2>
+            <p>
+                This notice describes how information may be handled when you download, open, or use <strong>Glamify: Dress Up Studio</strong> (the “App”) on Apple devices. It is meant to complement the privacy disclosures shown on the App Store and any separate policy published by the developer.
+            </p>
+        </section>
+
+        <section id="collect">
+            <h2><span class="num">2</span> Categories of information</h2>
+            <p>Depending on how you use the App and which features or integrations are active, the following types of data may be processed (as also summarized on the App Store product page):</p>
+            <ul>
+                <li><strong>Identifiers</strong> — such as device or advertising-related identifiers where applicable.</li>
+                <li><strong>Usage data</strong> — such as interactions with the App, session or feature usage, and similar analytics signals.</li>
+                <li><strong>Diagnostics</strong> — such as crash logs, performance data, or technical reports used to keep the App stable.</li>
+            </ul>
+            <p>Some of this data may be associated with your account or device (“linked to you”), while other data may be processed in a way that is not linked to your identity, depending on implementation and platform settings.</p>
+        </section>
+
+        <section id="use">
+            <h2><span class="num">3</span> How we use information</h2>
+            <p>Information may be used to:</p>
+            <ul>
+                <li>Operate dress-up, avatar creation, coloring, and related in-App experiences.</li>
+                <li>Maintain security, prevent fraud or abuse, and enforce acceptable use.</li>
+                <li>Measure engagement, improve features, and fix bugs or crashes.</li>
+                <li>Deliver or measure advertising or attribution where permitted by platform rules and your settings.</li>
+            </ul>
+        </section>
+
+        <section id="track">
+            <h2><span class="num">4</span> Tracking &amp; advertising context</h2>
+            <p>
+                The App Store listing indicates that certain data (for example, identifiers and usage data) may be used to track you across apps and websites owned by other companies, subject to Apple’s App Tracking Transparency framework and your device choices.
+            </p>
+            <p>
+                You can review and adjust tracking preferences in iOS/iPadOS settings (for example, under Privacy &amp; Security). Exact behavior may change with App updates and platform policies.
+            </p>
+        </section>
+
+        <section id="share">
+            <h2><span class="num">5</span> Sharing &amp; service providers</h2>
+            <p>
+                We do not sell your personal information in the ordinary sense of exchanging it for money. We may share data with vendors that help us host, analyze, secure, or distribute the App (for example, analytics or advertising partners), where those parties process data under contractual obligations and applicable law.
+            </p>
+            <p>We may also disclose information if required by law, regulation, legal process, or to protect the rights, safety, and integrity of users and services.</p>
+        </section>
+
+        <section id="kids">
+            <h2><span class="num">6</span> Families &amp; younger players</h2>
+            <p>
+                Glamify is rated for broad audiences on the App Store. If you are a parent or guardian and have questions about your child’s use of the App, you may use the contact options below. We encourage families to use Apple’s parental controls and Screen Time features to manage downloads and purchases.
+            </p>
+        </section>
+
+        <section id="rights">
+            <h2><span class="num">7</span> Your choices &amp; regional rights</h2>
+            <p>
+                Depending on where you live, you may have rights to access, correct, delete, or restrict certain processing of personal data, or to object to specific uses. You may also have the right to lodge a complaint with a supervisory authority. To exercise rights that apply to you, contact us using the information in the next section.
+            </p>
+        </section>
+
+        <section id="changes">
+            <h2><span class="num">8</span> Updates to this notice</h2>
+            <p>
+                We may revise this page from time to time. When we do, we will change the effective date at the top. Continued use of the App after changes means you accept the updated notice, except where your consent is required for new processing.
+            </p>
+        </section>
+
+        <section id="contact">
+            <h2><span class="num">9</span> Contact &amp; developer policy</h2>
+            <p>
+                <strong>Glamify: Dress Up Studio</strong> is offered on the App Store. The seller listed on the store page is responsible for App-related privacy practices. For the developer’s full privacy policy and additional details, please visit:
+            </p>
+            <div class="callout">
+                Developer privacy policy: <a href="https://loowz.com/privacy/" target="_blank" rel="noopener noreferrer" style="color: var(--rose);">loowz.com/privacy</a>
+            </div>
+            <p style="margin-top: 14px;">
+                You can also open the official listing for Glamify on the App Store for seller information, support links, and version notes.
+            </p>
+        </section>
+
+        <div class="external">
+            <p><strong>App Store listing</strong></p>
+            <a href="https://apps.apple.com/us/app/glamify-dress-up-studio/id6754342912?uo=4" target="_blank" rel="noopener noreferrer">Glamify: Dress Up Studio on the App Store</a>
+        </div>
+
+        <div class="nav-footer">
+            <a class="nav-home" href="index.html">← Back to Glamify home</a>
+            <a class="nav-store" href="https://apps.apple.com/us/app/glamify-dress-up-studio/id6754342912?uo=4" target="_blank" rel="noopener noreferrer">Download the App</a>
+        </div>
+    </div>
+</body>
+</html>
